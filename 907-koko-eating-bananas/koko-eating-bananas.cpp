@@ -1,7 +1,7 @@
     class Solution {
     public:
         int minEatingSpeed(vector<int>& piles, int h) {
-            int l=1;
+            int l=1,ans=1;
             int r = piles[0];
             for (int p : piles) {
                 r = max(r, p);
@@ -9,23 +9,22 @@
 
             while(l<=r){
                 int mid=l+(r-l)/2;
-                long long totalhrs=CTH(piles,mid);
-                if(totalhrs<=h){
+                long long totalH=0;
+
+                for (int p : piles) {
+                    totalH += (p + mid - 1) / mid;  
+                }
+
+                if(totalH<=h){
+                    ans=mid;
                     r=mid-1;
                 }else{
                     l=mid+1;
                 }   
 
             }
-            return l;
+            return ans;
         }
 
-        long long CTH(vector<int>& piles, int k){
-            long long totalH=0;
-            
-            for (int p : piles) {
-                totalH += (p + k - 1) / k;  
-            }
-            return totalH;
-        }
+        
     };
