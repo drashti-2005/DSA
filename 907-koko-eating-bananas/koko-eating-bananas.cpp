@@ -10,11 +10,9 @@
             while(l<=r){
                 int mid=l+(r-l)/2;
                 long long totalH=0;
-
                 for (int p : piles) {
                     totalH += (p + mid - 1) / mid;  
                 }
-
                 if(totalH<=h){
                     ans=mid;
                     r=mid-1;
