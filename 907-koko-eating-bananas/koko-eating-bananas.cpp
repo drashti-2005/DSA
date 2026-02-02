@@ -7,7 +7,6 @@
                 r = max(r, p);
             }
 
-            
             while(l<=r){
                 int mid=l+(r-l)/2;
                 long long totalhrs=CTH(piles,mid);
