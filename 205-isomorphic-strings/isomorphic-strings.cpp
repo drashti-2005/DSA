@@ -4,22 +4,20 @@ public:
         if(s.length()!=t.length()){
             return false;
         }
-        unordered_map<char ,char> mp1;
-        unordered_map<char ,char> mp2;
+        unordered_map<char ,char> ms;
+        unordered_map<char ,char> mt;
 
-        for(int i=0; i<s.length(); i++){
-            int c1 = s[i];
-            int c2 = t[i];
-
-            if (mp1.count(c1) && mp1[c1] != c2)
-                return false;
-
-            if (mp2.count(c2) && mp2[c2] != c1)
-                return false;
-
-            mp1[c1] = c2;
-            mp2[c2] = c1;
-            
+        for(int i=0;i<s.length();i++){
+            if(ms.find(s[i])!=ms.end()){
+                if(ms[s[i]]!=t[i]) return false;
+            }
+            else if(mt.find(t[i])!=mt.end()){
+                if(mt[t[i]]!=s[i]) return false;
+            }
+            else{
+                ms[s[i]]=t[i];
+                mt[t[i]]=s[i]; 
+            }
         }
         return true;
     }
