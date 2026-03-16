@@ -23,7 +23,7 @@ public:
                     temp=temp->next;
                     slow=slow->next;
                 }
-                return temp;
+                return slow;
             }
         }
         return NULL;     
